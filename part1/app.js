@@ -1,6 +1,13 @@
 
 const usersList = document.getElementById( "users" );
+const filter = document.getElementById( "filter" );
 
+let defUsersArr = []; // to be able to come back to the order from feed
+let usersArr = []; // the array we can play with, and render based on
+
+let photosArr = [];
+
+let lastFilter = "def"; // storing the last status of filtering, to avoid one extra .sort() from applyFilter() case "za"
 //--------------------------------
 
 const getUsers = async () => {
@@ -12,7 +19,12 @@ const getUsers = async () => {
     if (responsePhotos.status !== 200) throw new Error( responsePhotos.message );
     const dataPhotos = await responsePhotos.json();
 
-    return ({ users: data, photos: dataPhotos });
+    data.forEach( (item) => usersArr.push( item ) );
+    data.forEach( (item) => defUsersArr.push( item ) );
+
+    dataPhotos.forEach( (item) => photosArr.push( item ) );
+
+    return ({ users: usersArr, photos: photosArr });
 }
 
 //--------------------------------
@@ -27,6 +39,11 @@ getUsers()
         console.log( "Couldn't fetch the data:", err );
     })
 
+filter.addEventListener( "change", (e) => {
+    const val = filter.value;
+    applyFilter( val );
+});
+
 usersList.addEventListener( "click", (e) => {
     if (e.target.parentElement.id.includes( "userweb-" )) {
         // console.log( "found" );
@@ -38,6 +55,31 @@ usersList.addEventListener( "click", (e) => {
 
 //--------------------------------
 
+function applyFilter( filter ) {
+    usersList.innerHTML = ""; // emptying the users grid
+
+    switch (filter) {
+        case "def": {
+            usersArr = []; // emptying the array
+            defUsersArr.forEach( (item) => usersArr.push(item) );
+        } break;
+
+        case "az": {
+            usersArr.sort( (a, b) => {
+                return a.name.localeCompare(b.name);
+            });
+        } break;
+
+        case "za": {
+            if (lastFilter !== "az") applyFilter( "az" );
+            usersArr.reverse();
+        } break;
+    }
+
+    console.log( usersArr );
+    lastFilter = filter;
+    renderUsers( usersArr, photosArr );
+}
 
 function renderUsers( users, photos ) {
     // console.log( "-> renderUsers received data:", users );
