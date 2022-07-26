@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color:blanchedalmond;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* ------------------------------------- */
+/* main container */
+
+#users {
+    display: grid;
+    grid-template-columns: repeat( 12, 1fr );
+    column-gap: 24px;
+}
+
+/* ------------------------------------- */
+/* card */
+
+.user-card {
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid grey;
+}
+
+.card-photo {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+}
+
+.card-info {
+    padding: 10px;
+}
+    .card-name {
+        font-size: large;
+        font-weight: bold;
+    }
+
+    .card-username {
+        color: grey;
+        font-size: small;
+    }
+
+    .card-email {
+        color: burlywood;
+    }
+
+.card-address {
+    padding: 20px;
+    font-style: italic;
+}
+    .address-title {
+        font-weight: bold;
+    }
+
+.card-website {
+    color: blue;
+}
+
+.card-company {
+    padding: 20px;
+}
+
+.card-button {
+    align-self: flex-end;
+}
+
+.websiteBtn {
+    background-color: black;
+    color: white;
+    border: 0;
+    padding: 15px;
+}
+
+.websiteBtn:hover {
+    background-color: rgb(133, 127, 127);
+    color: black;
+    cursor: pointer;
+}
