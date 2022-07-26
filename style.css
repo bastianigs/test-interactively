@@ -5,8 +5,13 @@
 }
 
 body {
-    background-color:blanchedalmond;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgb(157, 193, 225);
+}
+
+header {
+    text-align: center;
+    padding: 50px;
 }
 
 /* ------------------------------------- */
@@ -14,30 +19,37 @@ body {
 
 #users {
     display: grid;
-    grid-template-columns: repeat( 12, 1fr );
+    grid-template-columns: repeat( 4, 1fr );
     column-gap: 24px;
+    row-gap: 30px;
+
+    width: 100%;
+    margin: 0 auto;
 }
 
 /* ------------------------------------- */
 /* card */
 
 .user-card {
-    width: 250px;
+    width: 300px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    background-color: white;
+    background-color: whitesmoke;
     border: 1px solid grey;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px rgb(172, 172, 172);
 }
 
 .card-photo {
-    width: 150px;
-    height: 150px;
     margin: 0 auto;
+    padding: 5px;
 }
 
 .card-info {
-    padding: 10px;
+    padding: 20px;
+    border-top: 1px solid grey;
 }
     .card-name {
         font-size: large;
@@ -50,23 +62,42 @@ body {
     }
 
     .card-email {
-        color: burlywood;
+        color: palevioletred;
+        margin-bottom: 10px;
     }
 
 .card-address {
-    padding: 20px;
+    margin: 10px;
+    padding: 10px;
     font-style: italic;
+    border: 1px solid grey;
+    border-radius: 10px;
 }
     .address-title {
         font-weight: bold;
     }
 
+.card-phone {
+    color: green;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+    .card-phone img {
+        margin-right: 10px;
+    }
+
 .card-website {
     color: blue;
 }
+    .card-website img {
+        margin-right: 10px;
+    }
 
 .card-company {
-    padding: 20px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid grey;
+    border-radius: 10px;
 }
 
 .card-button {
@@ -78,10 +109,46 @@ body {
     color: white;
     border: 0;
     padding: 15px;
+    margin: 10px;
 }
 
 .websiteBtn:hover {
     background-color: rgb(133, 127, 127);
     color: black;
     cursor: pointer;
+}
+
+/* ------------------------- */
+/* responsiveness */
+
+@media screen and (max-width: 650px) {
+    #users {
+        grid-template-columns: repeat( 1, 1fr );
+    }
+}
+
+@media screen and (min-width: 650px) and (max-width: 1000px) {
+    #users {
+        grid-template-columns: repeat( 2, 1fr );
+    }
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1500px) {
+    #users {
+        grid-template-columns: repeat( 3, 1fr );
+        width: 90%;
+    }
+}
+
+@media screen and (min-width: 1500px) and (max-width: 2000px) {
+    #users {
+        grid-template-columns: repeat( 4, 1fr );
+        width: 80%;
+    }
+}
+@media screen and (min-width: 3000px) {
+    #users {
+        grid-template-columns: repeat( 8, 1fr );
+        width: 70%;
+    }
 }

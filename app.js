@@ -42,40 +42,6 @@ usersList.addEventListener( "click", (e) => {
 function renderUsers( users, photos ) {
     // console.log( "-> renderUsers received data:", users );
 
-    /* summary
-
-        <div id="user-0" class="user-card">
-            <div class="card-photo">
-                <img src="https://via.placeholder.com/150/771796" alt="photo">
-            </div>
-            <div class="card-info">
-                <p class="card-name">Igescu Sebastian</p>
-                <p class="card-username">username</p>
-                <p class="card-email">sebastianigescu@gmail.com</p>
-                <div class="card-address">
-                    <p class="address-title">Address</p>
-                    <p class="address-street">adress</p>
-                    <p class="address-suite">suite</p>
-                    <p class="address-city">city</p>
-                    <p class="address-zipcode">zipcode</p>
-                    <div class="address-geo">
-                        <p class="geo-pos"><span class="geo-lat">lat</span>, <span class="geo-lng">lng</span></p>
-                    </div>
-                </div>
-                <p class="card-phone">phone</p>
-                <p class="card-website">website</p>
-                <div class="card-company">
-                    <p class="company-name">company name</p>
-                    <p class="company-phrase">catch phrase</p>
-                    <p class="company-bs">bs</p>
-                </div>
-            </div>
-            <div id="userweb-0" class="card-button">
-                <input type="button" value="Website">
-            </div>
-        </div>
-    */
-
     users.forEach( item => {
         // user card
         const userCard = document.createElement( "div" );
@@ -171,11 +137,19 @@ function renderUsers( users, photos ) {
 
             const cardPhone = document.createElement( "p" );
             cardPhone.classList.add( "card-phone" );
+                const cardPhoneSVG = document.createElement( "img" );
+                cardPhoneSVG.src = "./assets/phone.svg";
+                cardPhoneSVG.alt = "phone symbol";
+                cardPhone.appendChild( cardPhoneSVG );
             const cardPhoneText = document.createTextNode( item.phone );
             cardPhone.appendChild( cardPhoneText );
 
             const cardWebsite = document.createElement( "p" );
             cardWebsite.classList.add( "card-website" );
+                const cardWebsiteSVG = document.createElement( "img" );
+                cardWebsiteSVG.src = "./assets/link.svg";
+                cardWebsiteSVG.alt = "website symbol";
+                cardWebsite.appendChild( cardWebsiteSVG );
             const cardWebsiteText = document.createTextNode( item.website );
             cardWebsite.appendChild( cardWebsiteText );
 
