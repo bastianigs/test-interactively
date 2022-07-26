@@ -9,7 +9,7 @@ let photosArr = [];
 
 let lastFilter = "def"; // storing the last status of filtering, to avoid one extra .sort() from applyFilter() case "za"
 //--------------------------------
-
+console.log( usersArr );
 const getUsers = async () => {
     const response = await fetch("https://jsonplaceholder.typicode.com/users");
     if (response.status !== 200) throw new Error( response.message );
@@ -99,11 +99,6 @@ function renderUsers( users, photos ) {
             photo.alt = item.name;
             cardPhoto.appendChild( photo );
 
-        // details
-        const cardInfo = document.createElement( "div" );
-        cardInfo.classList.add( "card-info" );
-
-            // name username email div(address) phone website div(company)
             const cardName = document.createElement( "p" );
             cardName.classList.add( "card-name" );
             const cardNameText = document.createTextNode( item.name );  
@@ -114,8 +109,31 @@ function renderUsers( users, photos ) {
             const cardUsernameText = document.createTextNode( item.username );  
             cardUsername.appendChild( cardUsernameText );
 
-            const cardEmail = document.createElement( "p" );
+            cardPhoto.appendChild( cardName );
+            cardPhoto.appendChild( cardUsername );
+
+        // details
+        const cardInfo = document.createElement( "div" );
+        cardInfo.classList.add( "card-info" );
+
+            // const cardName = document.createElement( "p" );
+            // cardName.classList.add( "card-name" );
+            // const cardNameText = document.createTextNode( item.name );  
+            // cardName.appendChild( cardNameText );
+
+            // const cardUsername = document.createElement( "p" );
+            // cardUsername.classList.add( "card-username" );
+            // const cardUsernameText = document.createTextNode( item.username );  
+            // cardUsername.appendChild( cardUsernameText );
+
+            const cardEmail = document.createElement( "a" );
             cardEmail.classList.add( "card-email" );
+            cardEmail.href = "mailto: " + item.email;
+                const cardEmailSVG = document.createElement( "img" );
+                cardEmailSVG.classList.add( "card-svg" );
+                cardEmailSVG.src = "./assets/mail.svg";
+                cardEmailSVG.alt = "phone symbol";
+                cardEmail.appendChild( cardEmailSVG );
             const cardEmailText = document.createTextNode( item.email );  
             cardEmail.appendChild( cardEmailText );
 
@@ -127,24 +145,44 @@ function renderUsers( users, photos ) {
                     addressTitle.classList.add( "address-title" );
                     const addressTitleText = document.createTextNode( "Address" );  
                     addressTitle.appendChild( addressTitleText );
-                    
+
                     const addressStreet = document.createElement( "p" );
-                    addressTitle.classList.add( "address-street" );
+                    addressStreet.classList.add( "address-street" );
+                        const streetLabel = document.createElement( "span" );
+                        streetLabel.classList.add( "info-hint" );
+                        const streetLabelText = document.createTextNode( "Street:" );
+                        streetLabel.appendChild( streetLabelText );
+                        addressStreet.appendChild( streetLabel );
                     const addressStreetText = document.createTextNode( item.address.street );
                     addressStreet.appendChild( addressStreetText );
 
                     const addressSuite = document.createElement( "p" );
-                    addressTitle.classList.add( "address-suite" );
-                    const addressSuiteText = document.createTextNode( item.address.suite );
+                    addressSuite.classList.add( "address-suite" );
+                        const suiteLabel = document.createElement( "span" );
+                        suiteLabel.classList.add( "info-hint" );
+                        const suiteLabelText = document.createTextNode( "Suite:" );
+                        suiteLabel.appendChild( suiteLabelText );
+                        addressSuite.appendChild( suiteLabel );
+                        const addressSuiteText = document.createTextNode( item.address.suite );
                     addressSuite.appendChild( addressSuiteText );
 
                     const addressCity = document.createElement( "p" );
-                    addressTitle.classList.add( "address-city" );
+                    addressCity.classList.add( "address-city" );
+                        const cityLabel = document.createElement( "span" );
+                        cityLabel.classList.add( "info-hint" );
+                        const cityLabelText = document.createTextNode( "City:" );
+                        cityLabel.appendChild( cityLabelText );
+                        addressCity.appendChild( cityLabel );
                     const addressCityText = document.createTextNode( item.address.city );
                     addressCity.appendChild( addressCityText );
 
                     const addressZipcode = document.createElement( "p" );
-                    addressTitle.classList.add( "address-zipcode" );
+                    addressZipcode.classList.add( "address-zipcode" );
+                        const zipcodeLabel = document.createElement( "span" );
+                        zipcodeLabel.classList.add( "info-hint" );
+                        const zipcodeLabelText = document.createTextNode( "Zipcode:" );
+                        zipcodeLabel.appendChild( zipcodeLabelText );
+                        addressZipcode.appendChild( zipcodeLabel );
                     const addressZipcodeText = document.createTextNode( item.address.zipcode );
                     addressZipcode.appendChild( addressZipcodeText );
 
@@ -154,6 +192,12 @@ function renderUsers( users, photos ) {
 
                         const geoPos = document.createElement( "p" );
                         geoPos.classList.add( "geo-pos" );
+
+                        const geoLabel = document.createElement( "span" );
+                        geoLabel.classList.add( "info-hint" );
+                        const geoLabelText = document.createTextNode( "Coords:" );
+                        geoLabel.appendChild( geoLabelText );
+                        geoPos.appendChild( geoLabel );
 
                             const geoLat = document.createElement( "span" );
                             geoLat.classList.add( "geo-lat" );
@@ -177,18 +221,22 @@ function renderUsers( users, photos ) {
                     cardAddress.appendChild( addressZipcode );
                     cardAddress.appendChild( addressGeo );
 
-            const cardPhone = document.createElement( "p" );
+            const cardPhone = document.createElement( "a" );
             cardPhone.classList.add( "card-phone" );
+            cardPhone.href = "tel: " + item.email;
                 const cardPhoneSVG = document.createElement( "img" );
+                cardPhoneSVG.classList.add( "card-svg" );
                 cardPhoneSVG.src = "./assets/phone.svg";
                 cardPhoneSVG.alt = "phone symbol";
                 cardPhone.appendChild( cardPhoneSVG );
             const cardPhoneText = document.createTextNode( item.phone );
             cardPhone.appendChild( cardPhoneText );
 
-            const cardWebsite = document.createElement( "p" );
+            const cardWebsite = document.createElement( "a" );
             cardWebsite.classList.add( "card-website" );
+            cardWebsite.href = "https://" + item.website;
                 const cardWebsiteSVG = document.createElement( "img" );
+                cardWebsiteSVG.classList.add( "card-svg" );
                 cardWebsiteSVG.src = "./assets/link.svg";
                 cardWebsiteSVG.alt = "website symbol";
                 cardWebsite.appendChild( cardWebsiteSVG );
@@ -199,21 +247,34 @@ function renderUsers( users, photos ) {
             const cardCompany = document.createElement( "div" );
             cardCompany.classList.add( "card-company" );
 
+            const companyTitle = document.createElement( "p" );
+            companyTitle.classList.add( "company-title" );
+            const companyTitleText = document.createTextNode( "Company" );  
+            companyTitle.appendChild( companyTitleText );
+
                     const companyName = document.createElement( "p" );
                     companyName.classList.add( "company-name" );
+                        const compNameLabel = document.createElement( "span" );
+                        compNameLabel.classList.add( "info-hint" );
+                        const compNameLabelText = document.createTextNode( "Name:" );
+                        compNameLabel.appendChild( compNameLabelText );
+                        companyName.appendChild( compNameLabel );
                     const companyNameText = document.createTextNode( item.company.name );
                     companyName.appendChild( companyNameText );
 
                     const companyPhrase = document.createElement( "p" );
-                    companyPhrase.classList.add( "company-name" );
+                    companyPhrase.classList.add( "company-phrase" );
+                    const phraseQuote = document.createElement( "q" );
                     const companyPhraseText = document.createTextNode( item.company.catchPhrase );
-                    companyPhrase.appendChild( companyPhraseText );
+                    phraseQuote.appendChild( companyPhraseText );
+                    companyPhrase.appendChild( phraseQuote );
 
                     const companyBs = document.createElement( "p" );
-                    companyBs.classList.add( "company-name" );
+                    companyBs.classList.add( "company-bs" );
                     const companyBsText = document.createTextNode( item.company.bs );
                     companyBs.appendChild( companyBsText );
 
+                    cardCompany.appendChild( companyTitle );
                     cardCompany.appendChild( companyName );
                     cardCompany.appendChild( companyPhrase );
                     cardCompany.appendChild( companyBs );
@@ -232,8 +293,8 @@ function renderUsers( users, photos ) {
 
         userCard.appendChild( cardPhoto );
         userCard.appendChild( cardInfo );
-            cardInfo.appendChild( cardName );
-            cardInfo.appendChild( cardUsername );
+            // cardInfo.appendChild( cardName );
+            // cardInfo.appendChild( cardUsername );
             cardInfo.appendChild( cardEmail );
             cardInfo.appendChild( cardAddress );
             cardInfo.appendChild( cardPhone );
