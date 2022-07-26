@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: grey;
+}
+
+/* ------------------------------ */
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.photo {
+    height: 50vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 40px;
+}
+
+#photo1 {
+    background-image: url("./assets/img1.jpg");
+    z-index: 1; /* so the fading text of photo2 won't appear over the photo1 */
+}
+
+#photo2 {
+    background-image: url("./assets/img2.jpg");
+}
+
+#photo3 {
+    background-image: url("./assets/img3.jpeg");
+    z-index: 1;
+}
+
+#photo4 {
+    background-image: url("./assets/img4.jpg");
+}
+
+/* ------------------------------ */
+
+h1 {
+    font-weight: lighter;
+
+    animation-name: moveToRight;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+}
+
+h1:hover {
+    color: green;
+    font-weight: bold;
+}
+
+@keyframes moveToRight {
+    0% {
+      transform: translateX(-300px);
+      opacity: 0%;
+    }
+    100% {
+      transform: translateX(0px);
+      opacity: 100%;
+    }
+  }
+
+
+/* -------------------------- */
+/* responsive */
+
+@media screen and (max-width: 650px) {
+    h1 {
+        font-size: x-large;
+    }
+}
+
+@media screen and (min-width: 650px) {
+    h1 {
+        font-size: xx-large;
+    }
+}
