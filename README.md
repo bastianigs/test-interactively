@@ -19,7 +19,7 @@ Aplicațiile pot fi predate sub forma unei arhive, cu link către un repository 
 Part 1:
         Firstly, I've created the html, with a demo as card in order to be able to style it a bit before fetching data.
         Got some "design" to start with, and started fetching the data. That was the moment I realized how much I actually need to build in the dom, to get the proper looking. (223 lines)
-        I wanted to go for the ".innerHTML" way, but I've learnt recently that it is not the best idea, and is recommented to use ".createElement".
+        I wanted to go for the ".innerHTML" way, but I've learnt that it is not the best idea, and is recommented to use ".createElement".
         
         So after ~1 hour spent on the card elements, I faced the need of users' photos, and did a second promise in the async function.
         
