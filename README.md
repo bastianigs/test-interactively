@@ -16,16 +16,12 @@ Aplicațiile pot fi predate sub forma unei arhive, cu link către un repository 
 
 <hr>
 
-Part 1:
-        Firstly, I've created the html, with a demo as card in order to be able to style it a bit before fetching data.
-        Got some "design" to start with, and started fetching the data. That was the moment I realized how much I actually need to build in the dom, to get the proper looking. (223 lines)
-        I wanted to go for the ".innerHTML" way, but I've learnt that it is not the best idea, and is recommented to use ".createElement".
+1. Firstly, I've created the html, with a demo as card in order to be able to style it a bit before fetching data.
+Got some "design" to start with, and started fetching the data and faced the need of users' photos, and did a second promise in the async function.
         
-        So after ~1 hour spent on the card elements, I faced the need of users' photos, and did a second promise in the async function.
+The filtering was done by keeping stored the data fetched, and then sorting it and re-rendering the cards.
         
-        The filtering was done by keeping stored the data fetched, and then sorting it and re-rendering the cards.
+For the functionality of buttons, I've added an event listener on the grid/list itself, and checked target's id.
+I could have used an <a> instead, yes, but I've done it earlier at class="card-website", so chose to try to show more.
         
-        For the functionality of buttons, I've added an event listener on the grid/list itself, and checked target's id.
-        
-Part 2:
-        Pretty much only that: 4 photos, with a title in each, which is coming from left to right and changes color and font-weight when hovered.
+2. Pretty much only that: 4 photos, with a title in each, which is coming from left to right and changes color and font-weight when hovered.
