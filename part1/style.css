@@ -184,7 +184,7 @@ header {
 
 @media screen and (max-width: 650px) {
     #users {
-        grid-template-columns: repeat( 1, 1fr );
+        grid-template-columns: 1fr;
     }
 }
 
